@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 import org.jointheleague.graphical.robot.Robot;
 
-public class _01_RobotRace {
+public class _01_RobotRace2 {
 	//1. make a main method
 public static void main(String[] args) {
 	
@@ -16,9 +16,9 @@ Robot[] botArray = new Robot[10];
 	//3. use a for loop to initialize the robots.
 for(int i = 0;i<botArray.length;i++) {
 	botArray[i]=new Robot();
-	botArray[i].setX(70*(i+1));
+	botArray[i].setX(70);
 	botArray[i].setY(500);
-	botArray[i].setSpeed(5);
+	botArray[i].setSpeed(50);
 }
 		//4. make each robot start at the bottom of the screen, side by side, facing up
 
@@ -31,12 +31,22 @@ while(!winner) {
 for(int i = 0;i<botArray.length;i++) {
 	botArray[i].move(rand.nextInt(50));
 	if(botArray[i].getY()<50){
+		botArray[i].turn(90);
+		botArray[i].setY(50);
+	}
+	if(botArray[i].getX()>650){
+		botArray[i].turn(90);
+		botArray[i].setX(650);
+	}
+	if(botArray[i].getY()>500){
+		botArray[i].turn(90);
+		botArray[i].setY(500);
+	}
+	if(botArray[i].getX()<50){
+		winnerRobot= i+1;
 		winner=true;
-		winnerRobot = i+1;
 	}
-	if(winner) {
-		i=5;
-	}
+
 }
 	//6. use a while loop to repeat step 5 until a robot has reached the top of the screen.
 }
